@@ -5,7 +5,7 @@ const routes=[
         path:'/home',
         asias:'/home',
         name:'home',
-        component:()=> import('./components/Home.vue')
+        component:()=> import('./components/Home')
     }
 ];
 

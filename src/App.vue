@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <div>
-      <header></header>
+      <Header></Header>
 
         <router-view/>
 
-      <footer></footer>
+      <Footer></Footer>
     </div>
   </div>
 </template>
@@ -15,7 +15,7 @@
 
   export default{
     name: 'App',
-    component:{
+    components:{
       Header,Footer
     }
   }
