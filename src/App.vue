@@ -1,13 +1,17 @@
 <template>
-  <div id="app">
-    <div>
-      <Header></Header>
+  <!-- <div id="app"> -->
+    <body class="hold-transition sidebar-mini layout-fixed">
+      <div class="wrapper">
 
-        <router-view/>
+        <Header></Header>
 
-      <Footer></Footer>
-    </div>
-  </div>
+          <router-view/>
+
+        <Footer></Footer>
+
+      </div>
+    </body>
+  <!-- </div> -->
 </template>
 <script>
   import Header from './components/Include/Header.vue'

@@ -94,7 +94,7 @@
              <!--  this row will not appear when printing  -->
               <div className="row no-print">
                 <div className="col-12">
-                  <a href="invoice-print.html" rel="noopener" target="_blank" className="btn btn-default"><i className="fas fa-print"></i> Print</a>
+                  <button rel="noopener" target="_self" onclick=window.print() className="btn btn-default"><i className="fas fa-print"></i> Print</button>
                   <button type="button" className="btn btn-success float-right"><i className="far fa-credit-card"></i> Submit
                     Payment
                   </button>
