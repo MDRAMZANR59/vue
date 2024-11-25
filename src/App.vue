@@ -4,6 +4,7 @@
       <div class="wrapper">
 
         <Header></Header>
+        <Sidebar></Sidebar>
 
           <router-view/>
 
@@ -16,11 +17,12 @@
 <script>
   import Header from './components/Include/Header.vue'
   import Footer from './components/Include/Footer.vue'
+  import Sidebar from './components/Include/Sidebar.vue'
 
   export default{
     name: 'App',
     components:{
-      Header,Footer
+      Header,Footer,Sidebar
     }
   }
 </script>
