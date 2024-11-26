@@ -1,5 +1,5 @@
 <template>
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="min-height:100vh">
         <a href="index3.html" class="brand-link">
             <img src="../../../public/assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">AdminLTE 3</span>
@@ -39,6 +39,29 @@
                         </a>
                     </li>
 
+                    <li :class="['nav-item', { 'menu-open': openMenu === 'user' }]">
+                        <a href="javascript:void(0)" class="nav-link" @click="handleMenuClick('user')">
+                            <i class="nav-icon fas fa-sticky-note"></i>
+                            <p>
+                                User
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/customerNote/addNote" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add User</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/customerNote/noteList" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>User List</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li :class="['nav-item', { 'menu-open': openMenu === 'customerNote' }]">
                         <a href="javascript:void(0)" class="nav-link" @click="handleMenuClick('customerNote')">
                             <i class="nav-icon fas fa-sticky-note"></i>
@@ -62,8 +85,86 @@
                             </li>
                         </ul>
                     </li>
+                    <li :class="['nav-item', { 'menu-open': openMenu === 'customer' }]">
+                        <a href="javascript:void(0)" class="nav-link" @click="handleMenuClick('customer')">
+                            <i class="nav-icon fas fa-sticky-note"></i>
+                            <p>
+                                Customer's
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/customerNote/addNote" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Customer Add</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/customerNote/noteList" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Customer List</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li :class="['nav-item', { 'menu-open': openMenu === 'project' }]">
+                        <a href="javascript:void(0)" class="nav-link" @click="handleMenuClick('project')">
+                            <i class="nav-icon fas fa-sticky-note"></i>
+                            <p>
+                                Project
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/customerNote/addNote" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Project Add</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/customerNote/noteList" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Project List</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li :class="['nav-item', { 'menu-open': openMenu === 'mail' }]">
+                        <a href="javascript:void(0)" class="nav-link" @click="handleMenuClick('mail')">
+                            <i class="nav-icon fas fa-sticky-note"></i>
+                            <p>
+                                Mail
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/customerNote/addNote" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Mail Box</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/customerNote/noteList" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Note List</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
                     <li class="nav-header">EXAMPLES</li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-envelope"></i>
+                            <p>
+                                Service Add
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon far fa-envelope"></i>
