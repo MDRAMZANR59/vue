@@ -5,8 +5,12 @@
 
         <Header></Header>
         <Sidebar></Sidebar>
-
-          <router-view/>
+          <main>
+            <div class="content-wrapper">
+              <router-view/>
+            </div>
+          </main>
+          
 
         <Footer></Footer>
 
