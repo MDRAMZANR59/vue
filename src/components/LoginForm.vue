@@ -1,12 +1,12 @@
 <template>
-  <div class="container-xxl py-5">
+  <div class="container-xxl bdimage py-5">
     <div class="row justify-content-center">
-      <div class="col-6">
-        <div class="text-center mb-5">
-            <img src="../../public/assets/dist/img/logo.png" height="50" class='mb-4 rounded-circle'/>
-            <h3>Sign In</h3>
+      <div class="col-6 bg">
+        <div class="text-center bg-image mb-5" >
+            <img src="../../public/assets/dist/img/logo.png" height="50" class='mb-4 mt-2 rounded-circle'/>
+            <h3 class="font-weight-bolder h2" >Sign In</h3>
         </div>
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg font-weight-bolder h4">Sign in to start your session</p>
         <form method="post">
             <div class="input-group mb-3">
                 <input type="email" class="form-control" placeholder="Email" name="email" id="email" v-model="formData.email"/>
@@ -25,14 +25,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-8">
-                    <div class="icheck-primary">
-                    <input type="checkbox" id="remember"/>
-                    <label htmlFor="remember">
-                        Remember Me
-                    </label>
-                    </div>
-                </div>
+                <div class="col-8 clear-flex"></div>
                 <div class="col-4">
                     <button @click="login" type="button" class="btn btn-primary btn-block">Sign In</button>
                 </div>
@@ -97,5 +90,15 @@ export default {
 }
 .text-center {
   text-align: center;
+}
+.bdimage{
+  background-image: url('../../public/assets/dist/img/BgImage.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+.bg{
+  background-color: rgba(240, 248, 255, 0.47);
+  border-radius: 3%;
 }
 </style>
