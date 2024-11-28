@@ -1,5 +1,5 @@
 <template>
-  <div class="container-xxl bdimage py-5">
+  <div class="container-xxl bgimage py-5">
     <div class="row justify-content-center">
       <div class="col-6 bg">
         <div class="text-center bg-image mb-5" >
@@ -91,11 +91,12 @@ export default {
 .text-center {
   text-align: center;
 }
-.bdimage{
+.bgimage{
   background-image: url('../../public/assets/dist/img/BgImage.jpg');
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
+  height: 100vh;
 }
 .bg{
   background-color: rgba(240, 248, 255, 0.47);

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
      <div class="content">
       <div class="content-header">
         <div class="container-fluid">
@@ -80,5 +80,51 @@ import { plByMonth } from './Data'
 <style>
 .axis{
   display: none;
+}
+</style> -->
+
+<template>
+  <div class="content">
+   <div class="content-header">
+     <div class="container-fluid">
+       <div class="row mb-2">
+         <div class="col-sm-6">
+           <h1 class="m-0">Dashboard</h1>
+         </div>
+         <div class="col-sm-6">
+           <ol class="breadcrumb float-sm-right">
+             <li class="breadcrumb-item"><a href="#">Home</a></li>
+             <li class="breadcrumb-item active">Dashboard</li>
+           </ol>
+         </div>
+       </div>
+     </div>
+   </div>
+   <div class="container-fluid">
+     <div class="row">
+       <div class="col-lg-6">
+        
+       </div>
+       <div class="col-lg-6">
+       
+       </div>
+     </div>
+   </div>
+ </div>
+</template>
+
+<script>
+// import ApexCharts from 'apexcharts'
+ export default{
+     name:'Home',
+     props:{
+            msg:String
+        }
+ }
+</script>
+
+<style>
+.axis{
+display: none;
 }
 </style>
