@@ -6,7 +6,10 @@
         <Header v-if="showHeader" ></Header>
         <Sidebar v-if="showHeader" ></Sidebar>
           <main>
-            <div class="content-wrapper">
+            <div v-if="showHeader" class="content-wrapper">
+              <router-view/>
+            </div>
+            <div v-else>
               <router-view/>
             </div>
           </main>

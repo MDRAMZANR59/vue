@@ -27,12 +27,30 @@
           />
         </div>
         
-        <!-- <div class="col-sm-2 clear-flex"></div> -->
-        
         <!-- Second column with donut chart -->
         <div class="col-lg-8">
-          <!-- Added new Vue instance here for area chart -->
-          <apexchart type="area" height="350" :options="areaChartOptions" :series="areaSeries"></apexchart>
+          <!-- Added title and new Vue instance here for area chart -->
+          <apexchart 
+            type="area" 
+            height="350" 
+            :options="areaChartOptions" 
+            :series="areaSeries"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <!-- First column with the polar area chart -->
+        <div class="col-lg-4">
+          <apexchart 
+            type="polarArea" 
+            :options="polarAreaChartOptions" 
+            :series="polarAreaSeries"
+          />
+        </div>
+        
+        <!-- Second column (empty in your case) -->
+        <div class="col-lg-8">
+          <!-- Placeholder for any additional chart or content -->
         </div>
       </div>
     </div>
@@ -58,7 +76,7 @@ export default {
           type: 'radialBar',
         },
         title: {
-          text: 'All Project', 
+          text: 'Running Project', 
           align: 'center', 
           margin: 10,
           offsetX: 0, 
@@ -99,10 +117,27 @@ export default {
         name: 'series2',
         data: [11, 32, 45, 32, 34, 52, 41]
       }],
+      
+      // Polar Area Chart Data
+      polarAreaSeries: [14, 23, 21, 17, 15, 10, 12,],
+
+      // Area Chart Options
       areaChartOptions: {
         chart: {
           height: 350,
           type: 'area'
+        },
+        title: {
+          text: 'All Projects', // Title for the area chart
+          align: 'center',
+          margin: 10,
+          offsetX: 0,
+          offsetY: 0,
+          style: {
+            fontSize: '18px',
+            fontWeight: 'bold',
+            color: '#263238',
+          }
         },
         dataLabels: {
           enabled: false
@@ -112,14 +147,46 @@ export default {
         },
         xaxis: {
           type: 'datetime',
-          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+          categories: [
+            "2018-09-19T00:00:00.000Z",
+            "2018-09-19T01:30:00.000Z",
+            "2018-09-19T02:30:00.000Z",
+            "2018-09-19T03:30:00.000Z",
+            "2018-09-19T04:30:00.000Z",
+            "2018-09-19T05:30:00.000Z",
+            "2018-09-19T06:30:00.000Z"
+          ]
         },
         tooltip: {
           x: {
             format: 'dd/MM/yy HH:mm'
           },
         },
-      }
+      },
+
+      // Polar Area Chart Options
+      polarAreaChartOptions: {
+        chart: {
+          type: 'polarArea',
+        },
+        stroke: {
+          colors: ['#fff']
+        },
+        fill: {
+          opacity: 0.8
+        },
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+      },
     };
   }
 };
