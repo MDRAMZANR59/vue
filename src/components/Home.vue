@@ -172,7 +172,7 @@ export default {
         },
         yaxis: {
           title: {
-            text: 'Growth',
+            text: 'CPU',
           },
           labels: {
             formatter: function (y) {
@@ -202,7 +202,7 @@ export default {
           type: 'polarArea',
         },
         title: {
-          text: 'Running Projects',
+          text: 'Projects Progress',
           align: 'center',
           margin: 10,
           offsetX: 0,
