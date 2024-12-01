@@ -13,11 +13,17 @@
             </ol>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-3 p-1 m-1 bg-info">Hello</div>
+          <div class="col-md-3 p-1 m-1 bg-info">Hello</div>
+          <div class="col-md-3 p-1 m-1 bg-info">Hello</div>
+        
+        </div>
       </div>
     </div>
     <div class="container-fluid mh">
       <div class="row">
-        <!-- First column with the chart -->
+        <!-- First column with the radial bar chart -->
         <div class="col-lg-4">
           <apexchart
             type="radialBar"
@@ -26,14 +32,13 @@
             :series="series"
           />
         </div>
-        
-        <!-- Second column with donut chart -->
+
+        <!-- Second column with the area chart -->
         <div class="col-lg-8">
-          <!-- Added title and new Vue instance here for area chart -->
-          <apexchart 
-            type="area" 
-            height="350" 
-            :options="areaChartOptions" 
+          <apexchart
+            type="area"
+            height="350"
+            :options="areaChartOptions"
             :series="areaSeries"
           />
         </div>
@@ -41,16 +46,22 @@
       <div class="row">
         <!-- First column with the polar area chart -->
         <div class="col-lg-4">
-          <apexchart 
-            type="polarArea" 
-            :options="polarAreaChartOptions" 
+          <apexchart
+            type="polarArea"
+            :options="polarAreaChartOptions"
             :series="polarAreaSeries"
           />
         </div>
-        
-        <!-- Second column (empty in your case) -->
+
+        <!-- Second column (the last col-lg-8) with the bar chart -->
         <div class="col-lg-8">
-          <!-- Placeholder for any additional chart or content -->
+          <!-- Bar chart placed here -->
+          <apexchart
+            type="bar"
+            height="350"
+            :options="barChartOptions"
+            :series="barSeries"
+          />
         </div>
       </div>
     </div>
@@ -76,7 +87,7 @@ export default {
           type: 'radialBar',
         },
         title: {
-          text: 'Running Project', 
+          text: 'Total Project', 
           align: 'center', 
           margin: 10,
           offsetX: 0, 
@@ -116,10 +127,110 @@ export default {
       }, {
         name: 'series2',
         data: [11, 32, 45, 32, 34, 52, 41]
+      },
+      {
+        name: 'series3',
+        data: [50, 37, 85, 17, 68, 109, 54]
       }],
       
       // Polar Area Chart Data
-      polarAreaSeries: [14, 23, 21, 17, 15, 10, 12,],
+      polarAreaSeries: [14, 23, 21, 17, 15, 10, 12],
+
+      // Bar Chart Data (Your original series)
+      barSeries: [{
+        name: 'Cash Flow',
+        data: [1.45, 5.42, 5.9, -0.42, -12.6, -18.1, -18.2, -14.16, -11.1, -6.09, 0.34, 3.88, 13.07,
+          5.8, 2, 7.37, 8.1, 13.57, 15.75, 17.1, 19.8, -27.03, -54.4, -47.2, -43.3, -18.6, -48.6, 
+          -41.1, -39.6, -37.6, -29.4, -21.4, -2.4
+        ]
+      }],
+
+      // Chart options for the Bar Chart
+      barChartOptions: {
+        chart: {
+          type: 'bar',
+          height: 350
+        },
+        plotOptions: {
+          bar: {
+            colors: {
+              ranges: [{
+                from: -100,
+                to: -46,
+                color: '#F15B46'
+              }, {
+                from: -45,
+                to: 0,
+                color: '#FEB019'
+              }]
+            },
+            columnWidth: '80%',
+          }
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        yaxis: {
+          title: {
+            text: 'Growth',
+          },
+          labels: {
+            formatter: function (y) {
+              return y.toFixed(0) + "%";
+            }
+          }
+        },
+        xaxis: {
+          type: 'datetime',
+          categories: [
+            '2011-01-01', '2011-02-01', '2011-03-01', '2011-04-01', '2011-05-01', '2011-06-01',
+            '2011-07-01', '2011-08-01', '2011-09-01', '2011-10-01', '2011-11-01', '2011-12-01',
+            '2012-01-01', '2012-02-01', '2012-03-01', '2012-04-01', '2012-05-01', '2012-06-01',
+            '2012-07-01', '2012-08-01', '2012-09-01', '2012-10-01', '2012-11-01', '2012-12-01',
+            '2013-01-01', '2013-02-01', '2013-03-01', '2013-04-01', '2013-05-01', '2013-06-01',
+            '2013-07-01', '2013-08-01', '2013-09-01'
+          ],
+          labels: {
+            rotate: -90
+          }
+        }
+      },
+
+      // Polar Area Chart Options
+      polarAreaChartOptions: {
+        chart: {
+          type: 'polarArea',
+        },
+        title: {
+          text: 'Running Projects',
+          align: 'center',
+          margin: 10,
+          offsetX: 0,
+          offsetY: 0,
+          style: {
+            fontSize: '18px',
+            fontWeight: 'bold',
+            color: '#263238',
+          }
+        },
+        stroke: {
+          colors: ['#fff']
+        },
+        fill: {
+          opacity: 0.8
+        },
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+      },
 
       // Area Chart Options
       areaChartOptions: {
@@ -128,7 +239,7 @@ export default {
           type: 'area'
         },
         title: {
-          text: 'All Projects', // Title for the area chart
+          text: 'All Running Projects',
           align: 'center',
           margin: 10,
           offsetX: 0,
@@ -163,38 +274,15 @@ export default {
           },
         },
       },
-
-      // Polar Area Chart Options
-      polarAreaChartOptions: {
-        chart: {
-          type: 'polarArea',
-        },
-        stroke: {
-          colors: ['#fff']
-        },
-        fill: {
-          opacity: 0.8
-        },
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: 'bottom'
-            }
-          }
-        }]
-      },
     };
   }
 };
 </script>
 
 <style scoped>
+
 .mh {
-  height: 100vh;
+  height: 100%vh;
   background-color: rgba(255, 255, 255, 0.813);
   border-radius: 10px;
 }
