@@ -11,23 +11,18 @@
                     <img src="../../../public/assets/dist/img/user4-128x128.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="navbar-nav ml-auto">
-            <div class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-
-                <!-- Display the user's full name if logged in, otherwise show 'User Account' -->
-                {{ uid ? userName.name : 'User Account' }}
-              </a>
-              <div class=" nav-item dropdown-menu" >
-                <!-- Show Login/Signup if user is not logged in -->
-                <a v-if="uid" href="/Login" class="dropdown-item nav-item">Login</a>
-                <a v-if="uid" href="/Member" class="dropdown-item">Become a Member</a>
-
-                <!-- Show Logout and user-specific links if user is logged in -->
-                <button v-if="uid" class="dropdown-item" @click="logout">Logout</button>
-                <a v-if="uid" href="/MyProfile" class="dropdown-item">My Profile</a>
-              </div>
-            </div>
-          </div>
+    <div class="nav-item dropdown">
+        <a href="#" class=" ms-3 nav-link dropdown-toggle" data-bs-toggle="dropdown">
+            <!-- Display the user's full name if logged in, otherwise show 'User Account' -->
+            {{ uid ? userName.name : 'User Account' }}
+        </a>
+        <div class="nav-item dropdown-menu ">
+            <!-- Show Profile and Logout if user is logged in -->
+            <a v-if="uid" href="/userprofile" class="dropdown-item">Profile</a>
+            <a v-if="uid" href="javascript:void(0)" class="dropdown-item" @click="logout">Logout</a>
+        </div>
+    </div>
+</div>
             </div>
             <!-- SidebarSearch Form -->
             <div class="form-inline">
@@ -239,13 +234,20 @@ export default {
             this.openMenu = this.openMenu === menu ? '' : menu;
         },
         logout() {
-        this.uid = "";  // Clear uid
-        this.userName = null;  // Clear userName
-        sessionStorage.removeItem('uid'); // Clear sessionStorage
-        sessionStorage.removeItem('userName'); // Clear sessionStorage
-        this.$router.push('/'); // Redirect to home or login page
-        },
+    this.uid = "";  // Clear uid
+    this.userName = null;  // Clear userName
+    sessionStorage.removeItem('uid'); // Clear sessionStorage
+    sessionStorage.removeItem('userName'); // Clear sessionStorage
+    this.$router.push('/'); // Redirect to home or login page
+},
     }
 };
 </script>
+<style scoped>
+.nav-item .dropdown-menu {
+    min-width: 150px;
+    position: absolute !important;
+    transform: none !important;
+}
+</style>
 
