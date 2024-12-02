@@ -1,7 +1,6 @@
 <template>
-  <div className="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section className="content-header">
+  <!-- Content Header (Page header) -->
+  <section className="content-header">
       <div className="container-fluid">
         <div className="row mb-2">
           <div className="col-sm-6">
@@ -256,7 +255,6 @@
         </div>
       </div>
     </section>
-  </div>
 </template>
 <script>
   export default{

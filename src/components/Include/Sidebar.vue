@@ -1,8 +1,8 @@
 <template>
     <aside class="main-sidebar sidebar-dark-primary elevation-4" style="min-height:100vh">
-        <a href="index3.html" class="brand-link">
+        <a href="#" class="brand-link">
             <img src="../../../public/assets/dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <span class="brand-text font-weight-light">Code Crafter</span>
         </a>
         <!-- Sidebar -->
         <div class="sidebar">
@@ -10,9 +10,24 @@
                 <div class="image">
                     <img src="../../../public/assets/dist/img/user4-128x128.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
-                <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
-                </div>
+                <div class="navbar-nav ml-auto">
+            <div class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+
+                <!-- Display the user's full name if logged in, otherwise show 'User Account' -->
+                {{ uid ? userName.name : 'User Account' }}
+              </a>
+              <div class=" nav-item dropdown-menu" >
+                <!-- Show Login/Signup if user is not logged in -->
+                <a v-if="uid" href="/Login" class="dropdown-item nav-item">Login</a>
+                <a v-if="uid" href="/Member" class="dropdown-item">Become a Member</a>
+
+                <!-- Show Logout and user-specific links if user is logged in -->
+                <button v-if="uid" class="dropdown-item" @click="logout">Logout</button>
+                <a v-if="uid" href="/MyProfile" class="dropdown-item">My Profile</a>
+              </div>
+            </div>
+          </div>
             </div>
             <!-- SidebarSearch Form -->
             <div class="form-inline">
@@ -208,18 +223,28 @@
 <script>
 export default {
     name: 'Sidebar',
-    props: {
-        msg: String
-    },
+   
     data() {
+        console.log(JSON.parse(sessionStorage.getItem('userName')))
         return {
-            openMenu: ''
+            // open Sidebar
+            openMenu: '',
+            // dropdown
+            uid: sessionStorage.getItem('uid'),
+            userName: JSON.parse(sessionStorage.getItem('userName')),
         };
     },
     methods: {
         handleMenuClick(menu) {
             this.openMenu = this.openMenu === menu ? '' : menu;
-        }
+        },
+        logout() {
+        this.uid = "";  // Clear uid
+        this.userName = null;  // Clear userName
+        sessionStorage.removeItem('uid'); // Clear sessionStorage
+        sessionStorage.removeItem('userName'); // Clear sessionStorage
+        this.$router.push('/'); // Redirect to home or login page
+        },
     }
 };
 </script>
