@@ -7,19 +7,20 @@
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
+                <!--<div class="image">
                     <img :src="'http://127.0.0.1:8000/adduser/'+userName.photo" class="img-circle elevation-2" alt="User Image">
-                </div>
+                    <img :src="'http://127.0.0.1:8000/adduser/'+userName" class="img-circle elevation-2" alt="User Image">
+                </div>-->
                 <div class="navbar-nav ml-auto">
     <div class="nav-item dropdown">
-        <a href="#" class=" ms-3 nav-link dropdown-toggle" data-bs-toggle="dropdown">
+        <a href="#" class=" hb ms-3 nav-link dropdown-toggle" data-bs-toggle="dropdown">
             <!-- Display the user's full name if logged in, otherwise show 'User Account' -->
             {{ uid ? userName.name : 'User Account' }}
         </a>
-        <div class="nav-item dropdown-menu ">
+        <div class="nav-item bg-primary dropdown-menu ">
             <!-- Show Profile and Logout if user is logged in -->
-            <a v-if="uid" href="/userprofile" class="dropdown-item">Profile</a>
-            <a v-if="uid" href="javascript:void(0)" class="dropdown-item" @click="logout">Logout</a>
+            <a v-if="uid" href="/userprofile" class=" mya dropdown-item">Profile</a>
+            <a v-if="uid" href="javascript:void(0)" class=" mya dropdown-item" @click="logout">Logout</a>
         </div>
     </div>
 </div>
@@ -253,6 +254,16 @@ export default {
     top: auto;
     left: initial;
     transform: translate(16px, 42px);
+}
+.hb:hover{
+    color:rgb(38, 255, 0) !important;
+}
+.mya:hover{
+    color:rgb(38, 255, 0) !important;
+    background-color: black !important;
+}
+.mya:hover.hb{
+    color:rgb(38, 255, 0) !important;
 }
 </style>
 
