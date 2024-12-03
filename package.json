@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "apexcharts": "^4.1.0",
+    "axios": "^1.7.8",
     "bootstrap": "^5.3.3",
     "core-js": "^3.8.3",
     "qalendar": "^3.9.0",

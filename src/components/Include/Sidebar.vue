@@ -8,7 +8,7 @@
         <div class="sidebar">
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="../../../public/assets/dist/img/user4-128x128.jpg" class="img-circle elevation-2" alt="User Image">
+                    <img :src="'http://127.0.0.1:8000/adduser/'+userName.photo" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="navbar-nav ml-auto">
     <div class="nav-item dropdown">
@@ -49,7 +49,7 @@
                         </a>
                     </li>
 
-                    <li :class="['nav-item', { 'menu-open': openMenu === 'user' }]">
+                    <li v-if="uid && userName.role_id === '1'||'2'" :class="['nav-item', { 'menu-open': openMenu === 'user' }]">
                         <a href="javascript:void(0)" class="nav-link" @click="handleMenuClick('user')">
                             <i class="nav-icon fas fa-user"></i>
                             <p>
@@ -72,8 +72,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li :class="['nav-item', { 'menu-open': openMenu === 'customerNote' }]">
-                        <a href="javascript:void(0)" class="nav-link" @click="handleMenuClick('customerNote')">
+                    <li v-if="uid && userName.role_id === '1'||'2'||'3'" :class="['nav-item', { 'menu-open': openMenu === 'customerNote' }]">
+                        <a v-if="uid && userName.role_id === '1'||'2'||'3'" href="javascript:void(0)" class="nav-link" @click="handleMenuClick('customerNote')">
                             <i class="nav-icon fas fa-sticky-note"></i>
                             <p>
                                 Customer Note
@@ -81,13 +81,13 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item">
+                            <li v-if="uid && userName.role_id === '1'||'2'||'3'" class="nav-item">
                                 <a href="http://127.0.0.1:3000/customerNote/addNote" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Customer Note Add</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li v-if="uid && userName.role_id === '1'||'2'" class="nav-item">
                                 <a href="http://127.0.0.1:3000/customer/customerList" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Note List</p>
@@ -95,7 +95,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li :class="['nav-item', { 'menu-open': openMenu === 'customer' }]">
+                    <li v-if="uid && userName.role_id === '1'||'2'||'3'" :class="['nav-item', { 'menu-open': openMenu === 'customer' }]">
                         <a href="javascript:void(0)" class="nav-link" @click="handleMenuClick('customer')">
                             <i class="nav-icon fas fa-restroom"></i>
                             <p>
@@ -127,25 +127,25 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item">
+                            <li v-if="uid && userName.role_id === '1'||'2'" class="nav-item">
                                 <a href="http://127.0.0.1:3000/project/projectAdd" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add Project</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li v-if="uid && userName.role_id === '1'||'2'||'3'||'4'" class="nav-item">
                                 <a href="http://127.0.0.1:3000/project/projectList" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Project List</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li v-if="uid && userName.role_id === '1'||'2'" class="nav-item">
                                 <a href="http://127.0.0.1:3000/project/DeliveryProject" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Delivary Project</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li v-if="uid && userName.role_id === '1'||'2'" class="nav-item">
                                 <a href="http://127.0.0.1:3000/project/CancalingProject" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Cancaled Project</p>
@@ -172,7 +172,7 @@
                     </li>
 
                     <li class="nav-header">EXAMPLES</li>
-                    <li class="nav-item">
+                    <li v-if="uid && userName.role_id === '1'||'2'" class="nav-item">
                         <a href="http://127.0.0.1:3000/service/serviceAdd" class="nav-link">
                             <i class="fas fa-circle nav-icon"></i>
                             <p>
@@ -246,8 +246,13 @@ export default {
 <style scoped>
 .nav-item .dropdown-menu {
     min-width: 150px;
-    position: absolute !important;
-    transform: none !important;
+    z-index: 2147483647;
+    position: fixed !important;
+    inset: 0px auto auto 0px;
+    margin: 0px;
+    top: auto;
+    left: initial;
+    transform: translate(16px, 42px);
 }
 </style>
 
