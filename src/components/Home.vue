@@ -13,12 +13,6 @@
             </ol>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-3 p-1 m-1 bg-info">Hello</div>
-          <div class="col-md-3 p-1 m-1 bg-info">Hello</div>
-          <div class="col-md-3 p-1 m-1 bg-info">Hello</div>
-        
-        </div>
       </div>
     </div>
     <div class="container-fluid mh">
